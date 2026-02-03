@@ -1,7 +1,8 @@
 using EasyTripPlanner.Data;
+using EasyTripPlanner.Services;
 using EasyTripPlanner.Settings;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -43,6 +44,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        var jwt = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -50,13 +53,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
 
-            ValidIssuer = "EasyTripPlanner",
-            ValidAudience = "EasyTripPlanner",
+            ValidIssuer = jwt.Issuer,
+            ValidAudience = jwt.Audience,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("THIS_IS_A_SUPER_SECRET_KEY_12345")
+                Encoding.UTF8.GetBytes(jwt.Key)
             )
         };
     });
+
+
+
+
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("Jwt")
+);
+
+builder.Services.AddScoped<JwtService>();
+
 
 // Cashfree config
 builder.Services.Configure<CashfreeSettings>(

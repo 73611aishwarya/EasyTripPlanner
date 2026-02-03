@@ -5,19 +5,24 @@ using EasyTripPlanner.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyTripPlanner.Controllers
+
+
+
 {
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly JwtService _jwtService;
 
-        public AuthController(AppDbContext context)
+        public AuthController(AppDbContext context, JwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
         }
 
-        // LOGIN API
+        // LOGIN
         [HttpPost("login")]
         public IActionResult Login(LoginDto dto)
         {
@@ -29,7 +34,7 @@ namespace EasyTripPlanner.Controllers
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return Unauthorized("Invalid credentials");
 
-            var token = JwtService.GenerateToken(user);
+            var token = _jwtService.GenerateToken(user);
 
             return Ok(new
             {
@@ -38,28 +43,16 @@ namespace EasyTripPlanner.Controllers
                 {
                     id = user.Id,
                     name = user.Name,
-                    email = user.Email,
-                   
+                    email = user.Email
                 }
             });
         }
 
-
-        // SIGNUP API
+        // SIGNUP
         [HttpPost("signup")]
         public IActionResult SignUp(SignUpDto dto)
         {
-            if (dto == null)
-                return BadRequest("Invalid request");
-
-            if (string.IsNullOrWhiteSpace(dto.Email) ||
-                string.IsNullOrWhiteSpace(dto.Password))
-                return BadRequest("Email and password are required");
-
-            var existingUser = _context.Users
-                .FirstOrDefault(u => u.Email == dto.Email);
-
-            if (existingUser != null)
+            if (_context.Users.Any(u => u.Email == dto.Email))
                 return BadRequest("User already exists");
 
             var user = new User
@@ -72,10 +65,9 @@ namespace EasyTripPlanner.Controllers
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            var token = JwtService.GenerateToken(user);
+            var token = _jwtService.GenerateToken(user);
 
-            return Ok(new { token }); // always returns
+            return Ok(new { token });
         }
-
     }
 }
