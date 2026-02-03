@@ -1,0 +1,135 @@
+# EasyTripPlanner 
+
+EasyTripPlanner is a full-stack travel planning website that allows users to plan trips, manage bookings, and complete secure payments.
+
+---
+
+## Features
+- User authentication using JWT
+- Trip planning with dynamic cost calculation
+- Booking management
+- Secure payment integration (Cashfree)
+- Environment-based configuration (no secrets committed)
+
+---
+
+## ?? Tech Stack
+
+### Frontend
+- React.js
+- Bootsstrap
+- Redux
+- REST APIs
+
+### Backend
+- ASP.NET Core Web API
+- JWT Authentication
+- Entity Framework Core
+- SQL Server
+
+### Payment Gateway
+- Cashfree (Sandbox)
+
+---
+
+## Project Screenshots
+**Landing Page**  
+![Landing Page](screenshots/landing.png)
+
+**Help Page**  
+![Help Page](screenshots/help.png)
+
+
+**AboutUs Page**  
+![AboutUs Page](screenshots/about_us.png)
+
+
+**Feedback**  
+![Feedback](screenshots/feedback.png)
+
+
+
+
+
+
+### Authentication
+**Login Page**  
+![Login](screenshots/login.png)
+
+**Signup Page**  
+![Signup](screenshots/signup.png)
+
+**Forget_Password Page**  
+![Forget_Password](screenshots/forget_password.png)
+
+
+
+---
+
+###  Home & Trip Planning
+**Home Page – Popular Destinations**  
+![Home](screenshots/home_page.png)
+
+**Destinations Page **  
+![Destinations Page](screenshots/destination_page.png)
+
+** Destinations Filter**  
+![Destinations Filter](screenshots/destination_filter.png)
+
+
+*
+###  Booking
+ **Book_Iternary **  
+![Book_Iternary](screenshots/book_iternary.png)
+
+**Payment_Initialization **  
+![Payment_Initialization](screenshots/payment_initialization.png)
+
+**CashFree_UI**  
+![CashFree_UI](screenshots/cashfree_ui.png)
+
+**Payment_Success**  
+![Payment_Success](screenshots/payment_success.png)
+
+**My Trips**  
+![My Trips](screenshots/mytrip_1.png)
+
+**My Trips**  
+![My Trips](screenshots/mytrip_2.png)
+
+
+*---
+
+---
+
+##  Security Practices
+- Secrets stored in environment variables
+- JWT and payment keys not committed to GitHub
+- GitHub push protection enabled
+- Production-safe configuration
+
+---
+
+##  Project Structure
+
+
+EasyTripPlanner/
++-- .github/                # GitHub workflows / configs
++-- backend/                # ASP.NET Core Web API
++-- database/               # SQL scripts / DB related files
++-- frontend/               # React + Bootsstrap
++-- screenshots/            # UI screenshots for README
+¦   +-- login.png
+¦   +-- signup.png
+¦   +-- home_page.png
+¦   +-- payment_success.png
+¦   +-- ...
++-- .gitignore
++-- README.md
++-- appsettings.Development.json   (ignored)
+
+
+##  Author
+
+**Aishwarya**
+
