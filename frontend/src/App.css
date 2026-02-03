@@ -1,0 +1,27 @@
+.app-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page-content {
+  flex: 1;              /*  gives space to pages */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar fixed height */
+.navbar {
+  flex-shrink: 0;
+}
+
+/* Footer fixed height */
+.footer {
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* Hero takes remaining space */
+.main-content {
+  flex: 1;
+  overflow: hidden;
+}

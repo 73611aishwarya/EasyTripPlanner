@@ -1,0 +1,118 @@
+/* ================= ROOT PAGE ================= */
+
+.help-page {
+  height: calc(100vh - 80px); /* adjust if navbar height differs */
+  overflow-y: auto;
+  padding: 30px 40px;
+  background: #f8fafc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hide scrollbar but keep scroll */
+.help-page::-webkit-scrollbar {
+  width: 0px;
+}
+.help-page {
+  scrollbar-width: none;
+}
+
+/* ================= TITLE ================= */
+
+.help-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.help-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+/* ================= SECTION CARD ================= */
+
+.help-section {
+  background: #ffffff;
+  padding: 24px 28px;
+  margin-bottom: 26px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+/* ================= HEADINGS ================= */
+
+.help-section h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ================= TEXT ================= */
+
+.help-section p {
+  font-size: 14.5px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ================= LIST ================= */
+
+.help-section ul {
+  padding-left: 18px;
+  margin-bottom: 12px;
+}
+
+.help-section li {
+  font-size: 14.5px;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* ================= NOTE ================= */
+
+.note {
+  background: #fef3c7;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  color: #92400e;
+  font-weight: 600;
+}
+
+/* ================= CONTACT TEXT ================= */
+
+.help-section strong {
+  color: #111827;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .help-page {
+    padding: 20px;
+  }
+
+  .help-title {
+    font-size: 26px;
+  }
+
+  .help-section {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-page {
+    padding: 16px;
+  }
+
+  .help-title {
+    font-size: 24px;
+  }
+}
